@@ -1,6 +1,25 @@
-@SocialApp.Api_HostAddress = http://localhost:5108
+﻿@host = http://localhost:5108
 
-GET {{SocialApp.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### 1. Đăng ký
+POST {{host}}/api/auth/register
+Content-Type: application/json
 
-###
+{
+  "userName": "loc",
+  "email": "loc@example.com",
+  "password": "Matkhau@123",
+  "displayName": "Lộc"
+}
+
+### 2. Đăng nhập
+POST {{host}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "loc@example.com",
+  "password": "Matkhau@123"
+}
+
+### 3. Gọi endpoint cần đăng nhập (dán token vào chỗ XXX)
+GET {{host}}/api/auth/me
+Authorization: Bearer XXX
